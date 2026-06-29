@@ -208,6 +208,27 @@
   .fill-note .ft{font-size:13.5px;color:#2b2b2b;line-height:1.45;}
   .fill-note .ft b{color:var(--vinho);}
   .fill-hand{font-family:var(--hand);color:var(--vinho);font-size:21px;font-weight:600;margin:10px 0 2px;display:flex;align-items:center;gap:8px;line-height:1.15;}
+  .builder{margin-top:18px;display:flex;flex-direction:column;gap:13px;}
+  .field label{display:block;font-size:14px;font-weight:700;color:var(--verde);margin-bottom:6px;}
+  .field label .opt{color:var(--taupe);font-weight:600;font-size:12.5px;}
+  .field textarea{
+    width:100%;font-family:var(--sans);font-size:14.5px;color:var(--carvao);
+    background:#FBF8F1;border:1.5px solid var(--taupe-2);border-radius:10px;
+    padding:11px 13px;resize:vertical;line-height:1.45;min-height:44px;overflow:hidden;transition:border-color .16s, box-shadow .16s;
+  }
+  .field textarea::placeholder{color:#b3a895;}
+  .field textarea:focus{outline:none;border-color:var(--vinho);box-shadow:0 0 0 3px rgba(143,47,44,.12);background:#fff;}
+  .copy-primary{
+    margin-top:20px;width:100%;border:none;background:var(--verde);color:var(--marfim);
+    border-radius:12px;padding:16px;font-family:var(--sans);font-size:16px;font-weight:700;
+    cursor:pointer;display:flex;align-items:center;justify-content:center;gap:10px;transition:background .18s;
+  }
+  .copy-primary:hover{background:var(--verde-2);}
+  .copy-primary.done{background:var(--vinho);}
+  .copy-hint{text-align:center;font-size:13px;color:#6a6a6a;margin-top:9px;}
+  .preview-label{margin-top:26px;font-size:11px;font-weight:700;letter-spacing:.16em;text-transform:uppercase;color:var(--taupe);display:flex;align-items:center;gap:12px;}
+  .preview-label .ln{flex:1;height:1px;background:var(--taupe-2);}
+  .prompt-box .filled{color:var(--verde);font-weight:700;background:rgba(23,59,52,.11);box-shadow:0 0 0 2px rgba(23,59,52,.11);border-radius:3px;}
 
   /* closing */
   .bridge{
@@ -334,15 +355,15 @@
   <div class="steps">
     <div class="step">
       <div class="n">1</div>
-      <div><div class="h">Copie o prompt da Clara</div><div class="b">Está na próxima página, prontinho. Tem até botão de copiar.</div></div>
+      <div><div class="h">Preencha sobre o seu negócio</div><div class="b">Na próxima página, em campos simples. Sem editar nada no meio do texto — quanto mais específico, melhor a pauta.</div></div>
     </div>
     <div class="step">
       <div class="n">2</div>
-      <div><div class="h">Cole numa IA e preencha sobre o seu negócio</div><div class="b">Funciona em <code>ChatGPT</code>, <code>Gemini</code>, <code>Claude</code> ou outra. Responda o que você vende e pra quem — quanto mais específico, melhor a pauta.</div></div>
+      <div><div class="h">Copie o prompt já montado</div><div class="b">Um clique. Ele se monta sozinho com as suas respostas, prontinho pra colar.</div></div>
     </div>
     <div class="step">
       <div class="n">3</div>
-      <div><div class="h">Receba sua pauta e siga a rotina</div><div class="b">A Clara entrega 9 ideias completas e ainda monta o calendário de ~2 semanas: o que postar em cada dia.</div></div>
+      <div><div class="h">Cole numa IA e receba sua pauta</div><div class="b">Funciona em <code>ChatGPT</code>, <code>Gemini</code>, <code>Claude</code> ou outra. A Clara entrega 9 ideias completas + o calendário de ~2 semanas.</div></div>
     </div>
   </div>
 
@@ -377,22 +398,48 @@
     <span class="pill">Marketing sem firulas</span>
   </div>
 
-  <span class="kicker">O prompt</span>
-  <h2 class="display" style="font-size:34px;margin:12px 0 18px;">Conheça a Clara. <span class="ul">Copie e cole.</span></h2>
-
-  <div class="prompt-head">
-    <span class="badge">📋 Copie e cole</span>
-    <button class="copybtn" id="copybtn">Copiar prompt</button>
-  </div>
+  <span class="kicker">A ferramenta da Clara</span>
+  <h2 class="display" style="font-size:34px;margin:12px 0 16px;">Preencha. Copie. <span class="ul">Cole.</span></h2>
 
   <div class="fill-note">
     <span class="sw"></span>
-    <span class="ft">Só os campos <b>destacados em vermelho</b> precisam ser preenchidos por você. Troque o que está entre colchetes pelas informações do seu negócio — o resto é só copiar e colar.</span>
+    <span class="ft">Responda sobre o seu negócio nos campos abaixo. O prompt se <b>monta sozinho</b> com o que você escrever — depois é só clicar em copiar e colar na sua IA.</span>
   </div>
   <div class="fill-hand">
     <svg width="26" height="20" viewBox="0 0 26 20" fill="none"><path d="M2 4 C 10 6, 18 10, 23 16" stroke="#8F2F2C" stroke-width="2" stroke-linecap="round"/><path d="M23 16 L 16 15 M23 16 L 21 9" stroke="#8F2F2C" stroke-width="2" stroke-linecap="round"/></svg>
     quanto mais detalhado você preencher, melhor a pauta que a Clara monta
   </div>
+
+  <div class="builder">
+    <div class="field">
+      <label>O que você vende?</label>
+      <textarea id="f0" rows="2" placeholder="Ex.: roupas femininas casuais pro dia a dia"></textarea>
+    </div>
+    <div class="field">
+      <label>Pra quem você vende?</label>
+      <textarea id="f1" rows="2" placeholder="Ex.: mulheres de 25 a 40 que querem se vestir bem sem gastar muito e têm medo de errar a peça"></textarea>
+    </div>
+    <div class="field">
+      <label>Onde você fala com o cliente?</label>
+      <textarea id="f2" rows="1" placeholder="Ex.: Instagram e WhatsApp"></textarea>
+    </div>
+    <div class="field">
+      <label>O que te diferencia? <span class="opt">(opcional)</span></label>
+      <textarea id="f3" rows="1" placeholder="Ex.: atendimento próximo e troca fácil"></textarea>
+    </div>
+    <div class="field">
+      <label>Que tom combina com você?</label>
+      <textarea id="f4" rows="1" placeholder="Ex.: descontraído e acolhedor"></textarea>
+    </div>
+  </div>
+
+  <button class="copy-primary" id="copybtn">
+    <svg width="19" height="19" viewBox="0 0 24 24" fill="none"><rect x="9" y="9" width="11" height="11" rx="2" stroke="#F4EFE6" stroke-width="2"/><path d="M5 15H4a1 1 0 0 1-1-1V4a1 1 0 0 1 1-1h10a1 1 0 0 1 1 1v1" stroke="#F4EFE6" stroke-width="2"/></svg>
+    Copiar prompt pronto
+  </button>
+  <div class="copy-hint">aí é só colar no ChatGPT, Gemini, Claude ou outra IA</div>
+
+  <div class="preview-label">Prévia do seu prompt <span class="ln"></span></div>
 
   <div class="prompt-box" id="promptText">Você é a Clara, a diretora de conteúdo pessoal de quem está usando este prompt.
 
@@ -401,11 +448,11 @@ Você é estrategista de marketing especializada em redes sociais de empresas. V
 Comece se apresentando em UMA frase, de forma simpática, e então vá ao trabalho.
 
 SOBRE O NEGÓCIO:
-<span class="fld">- O que eu vendo: [descreva seu produto ou serviço]
-- Pra quem eu vendo: [quem é seu cliente, o que ele quer, do que tem medo]
-- Onde falo com o cliente: [ex: Instagram, WhatsApp, loja física]
-- O que me diferencia (se souber): [opcional]
-- Tom que combina comigo: [ex: descontraído, técnico, acolhedor]</span>
+- O que eu vendo: <span id="p0" class="fld">[descreva seu produto ou serviço]</span>
+- Pra quem eu vendo: <span id="p1" class="fld">[quem é seu cliente, o que ele quer, do que tem medo]</span>
+- Onde falo com o cliente: <span id="p2" class="fld">[ex: Instagram, WhatsApp, loja física]</span>
+- O que me diferencia (se souber): <span id="p3" class="fld">[opcional]</span>
+- Tom que combina comigo: <span id="p4" class="fld">[ex: descontraído, técnico, acolhedor]</span>
 
 Se faltar alguma informação importante pra você montar algo sob medida (e não genérico), me pergunte ANTES de começar. Se estiver tudo claro, pode montar.
 
@@ -495,18 +542,38 @@ Pense numa ordem que aqueça o público antes de chegar no post de venda.</div>
 
 <script>
   (function(){
+    var pairs=[['f0','p0'],['f1','p1'],['f2','p2'],['f3','p3'],['f4','p4']];
+    pairs.forEach(function(pr){
+      var ta=document.getElementById(pr[0]);
+      var sp=document.getElementById(pr[1]);
+      if(!ta||!sp)return;
+      var ph=sp.textContent;
+      function grow(){ta.style.height='auto';ta.style.height=(ta.scrollHeight+2)+'px';}
+      function upd(){
+        var v=ta.value.replace(/\s+$/,'');
+        if(v){sp.textContent=v;sp.className='filled';}
+        else{sp.textContent=ph;sp.className='fld';}
+        grow();
+      }
+      ta.addEventListener('input',upd);
+      grow();
+    });
+
     var btn=document.getElementById('copybtn');
     var box=document.getElementById('promptText');
-    if(!btn||!box)return;
-    btn.addEventListener('click',function(){
-      var txt=box.innerText;
-      function ok(){btn.textContent='Copiado ✓';btn.classList.add('done');setTimeout(function(){btn.textContent='Copiar prompt';btn.classList.remove('done');},2200);}
-      if(navigator.clipboard&&navigator.clipboard.writeText){
-        navigator.clipboard.writeText(txt).then(ok).catch(function(){fallback(txt,ok);});
-      }else{fallback(txt,ok);}
-    });
+    if(btn&&box){
+      var original=btn.innerHTML;
+      btn.addEventListener('click',function(){
+        var txt=box.innerText;
+        function ok(){btn.classList.add('done');btn.textContent='Prompt copiado ✓';setTimeout(function(){btn.classList.remove('done');btn.innerHTML=original;},2200);}
+        if(navigator.clipboard&&navigator.clipboard.writeText){
+          navigator.clipboard.writeText(txt).then(ok).catch(function(){fallback(txt,ok);});
+        }else{fallback(txt,ok);}
+      });
+    }
     function fallback(txt,ok){
-      var ta=document.createElement('textarea');ta.value=txt;document.body.appendChild(ta);ta.select();
+      var ta=document.createElement('textarea');ta.value=txt;ta.style.position='fixed';ta.style.opacity='0';
+      document.body.appendChild(ta);ta.focus();ta.select();
       try{document.execCommand('copy');ok();}catch(e){}
       document.body.removeChild(ta);
     }
